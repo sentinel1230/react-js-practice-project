@@ -1,15 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.[contenthash].js',
+        filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
         clean: true,
     },
-    mode: 'development',
-    devtool: 'source-map',
+    mode: isProduction ? 'production' : 'development',
+    devtool: isProduction ? 'source-map' : 'eval-source-map',
     devServer: {
         port: 3000,
         open: true,
@@ -25,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: isProduction ? [MiniCssExtractPlugin.loader, 'css-loader'] : ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -40,5 +43,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
+        ...(isProduction ? [new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash].css',
+        })] : []),
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
 }
