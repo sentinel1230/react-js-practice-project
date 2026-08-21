@@ -9,6 +9,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
+        publicPath: '/',
         clean: true,
     },
     mode: isProduction ? 'production' : 'development',
@@ -27,8 +28,21 @@ module.exports = {
                 use: 'babel-loader',
             },
             {
-                test: /\.css$/i,
-                use: isProduction ? [MiniCssExtractPlugin.loader, 'css-loader'] : ['style-loader', 'css-loader'],
+                test: /\.css$/,
+                use: [
+                    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                namedExport: false,
+                                localIdentName: isProduction
+                                    ? '[hash:base64:8]'
+                                    : '[path][name]__[local]',
+                            },
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,

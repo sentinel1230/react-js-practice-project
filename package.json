@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^7.1.4",
     "mini-css-extract-plugin": "^2.10.2",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.2",
+    "style-loader": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
