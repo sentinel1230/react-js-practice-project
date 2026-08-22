@@ -4,17 +4,18 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    
+
     margin: 0;
     padding: 0;
 }
 
 *:focus {
-  outline: none;
+    outline: none;
 }
 
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #F5F5F7;
 }
 
 a {

@@ -1,0 +1,37 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #DBDBDB;
+    border-radius: 40px;
+    width: max-content;
+    overflow: hidden;
+
+    background-color: #FFFFFF;
+}
+
+.tab {
+    padding: 13px 24px;
+    border: none;
+    border-right: 1px solid #DBDBDB;
+    background: transparent;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.tab:last-child {
+    border-right: none;
+}
+
+.tab:hover {
+    background-color: #F5F5F7;
+}
+
+.activeTab {
+    background-color: #F4717A;
+    color: #FFFFFF;
+}
+
+.activeTab:hover {
+    background-color: #F4717A;
+}

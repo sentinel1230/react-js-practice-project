@@ -1,7 +1,9 @@
+import styles from "./Cart.module.css";
+
 export default function Cart() {
-    return(
-        <div style={{ background: "red" }}>
-            <h1>Cart Page</h1>
+    return (
+        <div className={styles.main}>
+            
         </div>
     )
 }
