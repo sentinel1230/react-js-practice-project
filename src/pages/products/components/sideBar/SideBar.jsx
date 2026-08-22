@@ -50,7 +50,7 @@ export default function SideBar() {
     }
 
     const subToggle = (e, categoryName) => {
-        e.stopPropagation()
+        e.stopPropagation();
         setActiveSubCat(activeSubCat === categoryName ? "" : categoryName)
     }
 
