@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./SideBar.module.css";
+import SideBarItem from "./SideBarItem";
 
 export default function SideBar() {
     const categories = [
@@ -41,17 +42,17 @@ export default function SideBar() {
         }
     ];
 
-    const [activeCat, setActiveCat] = useState("")
-    const [activeSubCat, setActiveSubCat] = useState("")
+    const [activePath, setActivePath] = useState([])
 
-    const toggle = (categoryName) => {
-        setActiveCat(activeCat === categoryName ? "" : categoryName)
-        setActiveSubCat("")
-    }
+    const handleToggle = (name, depth) => {
+        const newPath = [...activePath]
 
-    const subToggle = (e, categoryName) => {
-        e.stopPropagation();
-        setActiveSubCat(activeSubCat === categoryName ? "" : categoryName)
+        if (newPath[depth] === name) {
+            setActivePath(newPath.slice(0, depth))
+        } else {
+            const clearedPath = newPath.slice(0, depth)
+            setActivePath([...clearedPath, name])
+        }
     }
 
     return (
@@ -62,42 +63,11 @@ export default function SideBar() {
 
             <div className={styles.mainContent}>
                 {categories.map((category) => (
-                    <div className={styles.categoryBlock}>
-                        <div
-                            key={category.name}
-                            className={`${styles.tab} ${activeCat === category.name ? styles.active : ""}`}
-                            onClick={() => toggle(category.name)}
-                        >
-                            <div className={styles.tabWrapper}>
-                                {category.name}
-                                {category.items?.length > 0 && (
-                                    <div className={styles.arrow}>
-                                        <span></span>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-
-                        {activeCat === category.name && category.items.length > 0 && (
-                            <div className={styles.subMenu}>
-                                {category.items.map((subCat) => (
-                                    <div
-                                        key={subCat.name}
-                                        className={`${styles.tab} && ${activeSubCat === subCat.name ? styles.active : ""}`}
-                                        onClick={(e) => subToggle(e, subCat.name)}
-                                    >
-                                        <div className={styles.tabWrapper}>
-                                            {subCat.name}
-                                            {subCat.items?.length > 0 && (
-                                                <div className={styles.arrow}>
-                                                    <span></span>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                    <div key={category.name} className={styles.categoryBlock}>
+                        <SideBarItem
+                            node={category}
+                            activePath={activePath}
+                            onToggle={handleToggle} />
                     </div>
                 ))}
             </div>
