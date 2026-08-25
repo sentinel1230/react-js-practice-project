@@ -41,6 +41,7 @@
 .subTab:hover,
 .nestTab:hover {
     background-color: var(--sidebar-hover-bg);
+    transition: background-color 0.2s ease
 }
 
 .tab {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./SideBar.module.css";
 import SideBarItem from "./SideBarItem";
 
-export default function SideBar() {
+export default function SideBar({ activeCat, onChangeCat }) {
     const categories = [
         {
             name: "Shoes",
@@ -45,15 +45,22 @@ export default function SideBar() {
     const [activePath, setActivePath] = useState([])
 
     const handleToggle = (name, depth) => {
-        const newPath = [...activePath]
+        if (activePath[depth] === name) {
+            const newPath = activePath.slice(0, depth);
+            setActivePath(newPath);
 
-        if (newPath[depth] === name) {
-            setActivePath(newPath.slice(0, depth))
-        } else {
-            const clearedPath = newPath.slice(0, depth)
-            setActivePath([...clearedPath, name])
+            if (newPath.length > 0) {
+                onChangeCat(newPath[newPath.length - 1]);
+            } else {
+                onChangeCat("");
+            }
         }
-    }
+        else {
+            const newPath = [...activePath.slice(0, depth), name];
+            setActivePath(newPath);
+            onChangeCat(name);
+        }
+    };
 
     return (
         <div className={styles.main}>
@@ -67,7 +74,9 @@ export default function SideBar() {
                         <SideBarItem
                             node={category}
                             activePath={activePath}
-                            onToggle={handleToggle} />
+                            onToggle={handleToggle}
+                            globalActiveCat={activeCat}
+                        />
                     </div>
                 ))}
             </div>

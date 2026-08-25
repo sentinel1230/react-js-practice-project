@@ -1,10 +1,7 @@
-import { useState } from "react";
 import styles from "./CategorySelector.module.css";
 
-export default function CategorySelector() {
-    const categories = ["Women", "Men", "Unisex", "Children", "New", "Old", "Recent", "Least popular", "Most popular"]
-
-    const [activeCat, setActiveCat] = useState(categories[0])
+export default function CategorySelector({ activeCat, onChangeCat }) {
+    const categories = ["Women", "Men", "Unisex", "Children", "New"]
 
     return (
         <div className={styles.main}>
@@ -12,7 +9,7 @@ export default function CategorySelector() {
                 <button
                     key={category}
                     className={`${styles.tab} ${activeCat === category ? styles.activeTab : ""}`}
-                    onClick={() => setActiveCat(category)}
+                    onClick={() => onChangeCat(activeCat === category ? "" : category)}
                 >
                     {category}
                 </button>

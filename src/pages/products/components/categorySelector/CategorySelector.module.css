@@ -35,3 +35,18 @@
 .activeTab:hover {
     background-color: #F4717A;
 }
+
+@media (max-width: 768px) {
+    .main {
+        width: 100%;
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+
+        scrollbar-width: none;
+    }
+}

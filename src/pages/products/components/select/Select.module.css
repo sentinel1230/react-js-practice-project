@@ -1,0 +1,77 @@
+.selectContainer {
+  position: relative;
+  width: 140px;
+}
+
+.selectButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: none;
+  font-size: 12px;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selectButton:hover {
+  border-color: #3B3B3B;
+}
+
+.selectButton.hasValue {
+  color: #3B3B3B;
+  font-weight: 500;
+  border-color: #3B3B3B;
+}
+
+.arrow {
+  width: 6px;
+  height: 6px;
+  border-bottom: 1.5px solid #777778;
+  border-right: 1.5px solid #777778;
+  transform: rotate(45deg);
+  margin-top: -3px;
+  transition: transform 0.2s ease;
+}
+
+.selectButton.active .arrow {
+  transform: rotate(45deg) scaleY(-1);
+  margin-top: 3px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #E4E4E4;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.optionItem {
+  padding: 10px 16px;
+  font-size: 12px;
+  color: #333333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.optionItem:hover {
+  background-color: #F4F4F6;
+}
+
+.optionItem.selected {
+  background-color: #EDEBEB;
+  font-weight: 600;
+  color: #E55A63;
+}

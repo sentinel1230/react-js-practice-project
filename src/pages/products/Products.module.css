@@ -24,8 +24,74 @@
     min-height: 100px;
 }
 
-.mainContent {
+.catalogContainer {
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
-    min-height: 100px;
-    border: 1px solid red;
+}
+
+.breadcrumbs {
+    display: flex;
+    flex-direction: row;
+
+    gap: 26px;
+}
+
+.breadcrumbs span {
+    font-size: 12px;
+    color: #FF2D55;
+}
+
+.filterToolbar {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 16px;
+}
+
+.dropdownsGroup {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 9px;
+}
+
+.catalogGrid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 240px));
+    gap: 22px;
+}
+
+@media (max-width: 768px) {
+    .contentLayout {
+        flex-direction: column;
+        gap: 24px;
+        padding: 16px 16px 0 16px;
+    }
+
+    .sideBar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .dropdownsGroup {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 8px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .dropdownsGroup>* {
+        flex-shrink: 1;
+    }
+
+    .catalogGrid {
+        margin-top: 24px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+    }
 }

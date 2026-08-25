@@ -1,0 +1,168 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 372px;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardContainer:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cardImgContainer {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    background-color: #F4F4F6;
+
+    border-top: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.productImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heartBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    background-image: url(../../../../assets/white-heart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: transform 0.15s ease;
+}
+
+.heartActive {
+    background-image: url(../../../../assets/heart.svg)
+}
+
+.tagsWrapper {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+.tagNew,
+.tagReserved {
+    padding: 8px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.tagNew {
+    background-color: #71C4EF;
+    color: #FFFFFF;
+}
+
+.tagReserved {
+    background-color: #F4DC9E;
+    color: #A85100;
+}
+
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px;
+}
+
+.heading {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333333;
+    font-weight: 500;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.costContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.cost {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.addToCart {
+    width: 16px;
+    height: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url("../../../../assets/gray-card.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: transform 0.15s ease;
+}
+
+.addedBadge {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FF2D55;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+.addedBadge::before {
+    content: "Added";
+}
+
+.addedBadge:hover::before {
+    content: "Remove";
+}
+
+.addedBadge:hover {
+    color: #777778;
+    text-decoration: underline;
+}
+
+.addToCart:hover,
+.heartBtn:hover {
+    transform: scale(1.1);
+}
