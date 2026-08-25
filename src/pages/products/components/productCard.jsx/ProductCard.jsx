@@ -1,11 +1,6 @@
 import styles from "./ProductCard.module.css";
 import { useState } from "react";
 
-import disabledHeartIcon from "../../../../assets/white-heart.svg"
-import enabledHeartIcon from "../../../../assets/heart.svg"
-import CartIcon from "../../../../assets/cart.svg"
-
-
 export default function ProductCard({ product }) {
     if (!product) return null;
 

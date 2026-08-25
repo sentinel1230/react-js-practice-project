@@ -5,60 +5,63 @@ import SideBarItem from "./SideBarItem";
 export default function SideBar({ activeCat, onChangeCat }) {
     const categories = [
         {
-            name: "Shoes",
+            name: "Apparel",
+            slug: "apparel-group",
             items: [
-                { name: "Leather shoes" }
+                { name: "Tops", slug: "tops" }
             ]
         },
         {
-            name: "Apparel",
-            items: []
+            name: "Shoes",
+            slug: "shoes-group",
+            items: [
+                { name: "Men's Shoes", slug: "mens-shoes" },
+                { name: "Women's Shoes", slug: "womens-shoes" }
+            ]
         },
         {
             name: "Accessories",
+            slug: "accessories-group",
             items: [
-                {
-                    name: "Belts",
-                    items: [
-                        { name: "Leather belts" },
-                        { name: "Cotton belts" }
-                    ]
-                },
-                {
-                    name: "Another accessories",
-                    items: [
-                        { name: "Another kind of accessory" }
-                    ]
-                }
+                { name: "Watches", slug: "mens-watches" },
+                { name: "Bags", slug: "womens-bags" },
+                { name: "Jewellery", slug: "womens-jewellery" },
+                { name: "Sunglasses", slug: "sunglasses" }
             ]
         },
         {
-            name: "Sport",
-            items: []
-        },
-        {
             name: "Beauty",
-            items: []
+            slug: "beauty-group",
+            items: [
+                { name: "Cosmetics", slug: "beauty" },
+                { name: "Skin Care", slug: "skin-care" },
+                { name: "Fragrances", slug: "fragrances" }
+            ]
         }
     ];
 
     const [activePath, setActivePath] = useState([])
 
-    const handleToggle = (name, depth) => {
-        if (activePath[depth] === name) {
+    const handleToggle = (node, depth) => {
+        if (activePath[depth] === node.name) {
             const newPath = activePath.slice(0, depth);
             setActivePath(newPath);
 
             if (newPath.length > 0) {
-                onChangeCat(newPath[newPath.length - 1]);
+                const parentName = newPath[newPath.length - 1];
+                const parentNode = categories.find(c => c.name === parentName);
+                onChangeCat(parentNode ? parentNode.slug : "");
             } else {
                 onChangeCat("");
             }
         }
         else {
-            const newPath = [...activePath.slice(0, depth), name];
+            const newPath = [...activePath.slice(0, depth), node.name];
             setActivePath(newPath);
-            onChangeCat(name);
+
+            if (node.slug) {
+                onChangeCat(node.slug)
+            }
         }
     };
 

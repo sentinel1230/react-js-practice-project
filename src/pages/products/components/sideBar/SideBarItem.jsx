@@ -5,11 +5,11 @@ export default function SideBarItem({ node, depth = 0, activePath, onToggle, glo
     const isOpen = activePath[depth] === node.name
     const hasChildren = node.items && node.items.length > 0
 
-    const isCurrentActiveProduct = globalActiveCat === node.name;
+    const isCurrentActiveProduct = globalActiveCat === node.slug;
 
     const handleClick = (e) => {
         e.stopPropagation()
-        onToggle(node.name, depth, hasChildren)
+        onToggle(node, depth)
     }
 
     let tabClass = styles.tab

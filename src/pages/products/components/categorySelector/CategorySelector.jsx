@@ -1,7 +1,7 @@
 import styles from "./CategorySelector.module.css";
 
 export default function CategorySelector({ activeCat, onChangeCat }) {
-    const categories = ["Women", "Men", "Unisex", "Children", "New"]
+    const categories = ["Women", "Men", "Unisex"]
 
     return (
         <div className={styles.main}>

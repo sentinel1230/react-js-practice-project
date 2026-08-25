@@ -1,6 +1,8 @@
 .main {
     display: flex;
     flex-direction: column;
+
+    padding-bottom: 60px;
 }
 
 .topBar {
@@ -62,6 +64,37 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 240px));
     gap: 22px;
+}
+
+.pagination {
+    width: 240px;
+    padding: 10px;
+    border-radius: 40px;
+    background-color: #FF2D55;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 60px;
+
+    transition: transform 0.15s ease;
+}
+
+.pagination:hover {
+    transform: scale(1.1);
+    background-color: #f6617c;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px;
+    text-align: center;
+    color: #888;
+}
+
+.emptyState p {
+    margin: 4px 0;
 }
 
 @media (max-width: 768px) {
