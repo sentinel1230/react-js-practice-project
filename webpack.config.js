@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
-        publicPath: '/',
+        publicPath: isProduction ? '/task-5---react-javascript-practice/' : '/',
         clean: true,
     },
     mode: isProduction ? 'production' : 'development',
@@ -56,6 +56,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
         }),
         ...(isProduction ? [new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css',
