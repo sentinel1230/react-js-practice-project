@@ -1,7 +1,11 @@
+import styles from "./Home.module.css"
+
 export default function Home() {
-    return(
-        <div style={{ background: "blue" }}>
-            <h1>Home Page</h1>
-        </div>
+    return (
+        <main className={styles.content}>
+            <div className={styles.heading}>
+                <span> Welcome to home page </span>
+            </div>
+        </main>
     )
 }

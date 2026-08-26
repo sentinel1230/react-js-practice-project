@@ -53,10 +53,10 @@ export default function Cart() {
 
             <div className={styles.summary}>
                 <span className={styles.totalLabel}>
-                    Итого: <span className={styles.totalValue}>{totalPrice.toFixed(2)} €</span>
+                    Total: <span className={styles.totalValue}>{totalPrice.toFixed(2)} €</span>
                 </span>
                 <button className={styles.clearBtn} onClick={() => dispatch(clearCart())}>
-                    Очистить корзину
+                    Clear cart
                 </button>
             </div>
         </div>
