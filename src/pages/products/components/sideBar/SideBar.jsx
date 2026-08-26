@@ -8,6 +8,8 @@ export default function SideBar({ activeCat, onChangeCat }) {
             name: "Apparel",
             slug: "apparel-group",
             items: [
+                { name: "Men's Shirts", slug: "mens-shirts" },
+                { name: "Women's Dresses", slug: "womens-dresses" },
                 { name: "Tops", slug: "tops" }
             ]
         },
