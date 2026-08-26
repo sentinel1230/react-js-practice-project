@@ -17,13 +17,8 @@ export default function ProductCard({ product }) {
                 />
 
                 <button
-                    className={`${styles.heartBtn} ${isFavorite? styles.heartActive : ""}`}
+                    className={`${styles.heartBtn} ${isFavorite ? styles.heartActive : ""}`}
                     onClick={() => setIsFavorite(!isFavorite)}>{ }</button>
-
-                <div className={styles.tagsWrapper}>
-                    <span className={styles.tagNew}>New</span>
-                    {product.stock < 10 && <span className={styles.tagReserved}>Reserved</span>}
-                </div>
             </div>
 
             <div className={styles.cardInfo}>

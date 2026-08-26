@@ -59,37 +59,6 @@
     background-image: url(../../../../assets/heart.svg)
 }
 
-.tagsWrapper {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    display: flex;
-    gap: 6px;
-
-    white-space: nowrap;
-}
-
-.tagNew,
-.tagReserved {
-    padding: 8px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.tagNew {
-    background-color: #71C4EF;
-    color: #FFFFFF;
-}
-
-.tagReserved {
-    background-color: #F4DC9E;
-    color: #A85100;
-}
-
-
 .cardInfo {
     display: flex;
     flex-direction: column;
