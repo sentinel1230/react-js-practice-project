@@ -1,15 +1,18 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const shouldAnalyze = process.env.ANALYZE === 'true';
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
-        publicPath: isProduction ? '/task-5---react-javascript-practice/' : '/',
+        publicPath: isProduction ? '/react-js-practice-project/' : '/',
         clean: true,
     },
     mode: isProduction ? 'production' : 'development',
@@ -57,12 +60,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
-        }),
         ...(isProduction ? [new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css',
         })] : []),
+        ...(shouldAnalyze ? [new BundleAnalyzerPlugin()] : [])
     ],
     optimization: {
         splitChunks: {

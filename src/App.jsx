@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         ]
     }
 ], {
-    basename: process.env.NODE_ENV === "production" ? "/task-5---react-javascript-practice" : "/",
+    basename: process.env.NODE_ENV === "production" ? "/react-js-practice-project" : "/",
 })
 
 export default function App() {
