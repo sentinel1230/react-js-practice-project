@@ -1,11 +1,26 @@
 import styles from "./ProductCard.module.css";
+
+import { addToCart, removeFromCart } from "../../../../features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function ProductCard({ product }) {
     if (!product) return null;
 
     const [isFavorite, setIsFavorite] = useState(false)
-    const [isAdded, setIsAdded] = useState(false)
+
+    const dispatch = useDispatch();
+    const isAdded = useSelector((state) =>
+        state.cart.items.some((item) => item.id === product.id)
+    );
+
+    const handleAddToCart = () => {
+        dispatch(addToCart(product));
+    };
+
+    const handleRemoveFromCart = () => {
+        dispatch(removeFromCart(product.id));
+    };
 
     return (
         <div className={styles.cardContainer}>
@@ -18,7 +33,7 @@ export default function ProductCard({ product }) {
 
                 <button
                     className={`${styles.heartBtn} ${isFavorite ? styles.heartActive : ""}`}
-                    onClick={() => setIsFavorite(!isFavorite)}>{ }</button>
+                    onClick={() => setIsFavorite(!isFavorite)}/>
             </div>
 
             <div className={styles.cardInfo}>
@@ -32,14 +47,13 @@ export default function ProductCard({ product }) {
                     </div>
                     {isAdded ? (
                         <button
-                            className={styles.addedBadge}
-                            onClick={() => setIsAdded(false)}
+                            className={styles.addedBadgeBtn}
+                            onClick={handleRemoveFromCart}
                         />
                     ) : (
                         <button
-                            className={styles.addToCart}
-                            onClick={() => setIsAdded(true)}
-                            aria-label="Add to cart"
+                            className={styles.addToCartBtn}
+                            onClick={handleAddToCart}
                         />
                     )}
                 </div>

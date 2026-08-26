@@ -93,7 +93,7 @@
     color: #333333;
 }
 
-.addToCart {
+.addToCartBtn {
     width: 16px;
     height: 16px;
     border: none;
@@ -106,7 +106,7 @@
     transition: transform 0.15s ease;
 }
 
-.addedBadge {
+.addedBadgeBtn {
     background-color: transparent;
     border: none;
     font-size: 14px;
@@ -118,20 +118,20 @@
     align-items: center;
 }
 
-.addedBadge::before {
+.addedBadgeBtn::before {
     content: "Added";
 }
 
-.addedBadge:hover::before {
+.addedBadgeBtn:hover::before {
     content: "Remove";
 }
 
-.addedBadge:hover {
+.addedBadgeBtn:hover {
     color: #777778;
     text-decoration: underline;
 }
 
-.addToCart:hover,
+.addToCartBtn:hover,
 .heartBtn:hover {
     transform: scale(1.1);
 }
