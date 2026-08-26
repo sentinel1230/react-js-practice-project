@@ -33,7 +33,7 @@ Build for production:
 
 Deployment
 
-- Live demo: 
+- Live demo: https://sentinel1230.github.io/react-js-practice-project/
 
 Project Structure
 src/
