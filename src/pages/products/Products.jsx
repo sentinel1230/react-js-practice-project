@@ -6,6 +6,9 @@ import Select from "./components/select/Select";
 import { useCategoryProducts } from "./hooks/useCategoryProducts";
 import { useProductFilters } from "./hooks/useProductFilters";
 
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../features/cart/cartSlice";
+
 import { useState } from "react";
 
 export default function Products() {
@@ -16,6 +19,12 @@ export default function Products() {
         selectedPrice, setSelectedPrice,
         availableBrands, filteredProducts,
     } = useProductFilters(products)
+
+    const dispatch = useDispatch()
+    const cartItems = useSelector((state) => state.cart.items)
+
+    const handleAddToCart = (product) => dispatch(addToCart(product))
+    const handleRemoveFromCart = (productId) => dispatch(removeFromCart(productId))
 
     return (
         <div className={styles.main}>
@@ -51,7 +60,13 @@ export default function Products() {
                         <div className={styles.catalogWrapper}>
                             <div className={styles.catalogGrid}>
                                 {filteredProducts.map((item) => (
-                                    <ProductCard key={item.id} product={item} />
+                                    <ProductCard
+                                        key={item.id}
+                                        product={item}
+                                        isInCart={cartItems.some((cartItem) => cartItem.id === item.id)}
+                                        onAddToCart={handleAddToCart}
+                                        onRemoveFromCart={handleRemoveFromCart}
+                                    />
                                 ))}
                             </div>
                             {hasMore && (
