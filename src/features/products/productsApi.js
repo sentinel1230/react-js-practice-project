@@ -20,13 +20,6 @@ export const productsApi = createApi({
         getCategoryList: builder.query({
             query: () => `/products/category-list`,
         }),
-        searchProducts: builder.query({
-            query: (q) => `/products/search?q=${encodeURIComponent(q)}`,
-            transformResponse: (response) => ({
-                products: response.products,
-                total: response.total,
-            })
-        }),
     }),
 });
 
