@@ -5,10 +5,34 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com" }),
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => "/products?limit=0",
-            transformResponse: (response) => response.products,
+            query: ({ category, limit = 30, skip = 0 } = {}) => {
+                const path = category ? `/products/category/${category}` : "/products"
+                return `${path}?limit=${limit}&skip=${skip}`
+            },
+            transformResponse: (response) => ({
+                products: response.products,
+                total: response.total,
+            }),
+        }),
+        getProductById: builder.query({
+            query: (id) => `/products/${id}`,
+        }),
+        getCategoryList: builder.query({
+            query: () => `/products/category-list`,
+        }),
+        searchProducts: builder.query({
+            query: (q) => `/products/search?q=${encodeURIComponent(q)}`,
+            transformResponse: (response) => ({
+                products: response.products,
+                total: response.total,
+            })
         }),
     }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const {
+    useGetProductsQuery,
+    useGetProductByIdQuery,
+    useGetCategoryListQuery,
+    useSearchProductsQuery,
+} = productsApi;

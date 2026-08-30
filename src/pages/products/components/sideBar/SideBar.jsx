@@ -6,7 +6,6 @@ export default function SideBar({ activeCat, onChangeCat }) {
     const categories = [
         {
             name: "Apparel",
-            slug: "apparel-group",
             items: [
                 { name: "Men's Shirts", slug: "mens-shirts" },
                 { name: "Women's Dresses", slug: "womens-dresses" },
@@ -15,7 +14,6 @@ export default function SideBar({ activeCat, onChangeCat }) {
         },
         {
             name: "Shoes",
-            slug: "shoes-group",
             items: [
                 { name: "Men's Shoes", slug: "mens-shoes" },
                 { name: "Women's Shoes", slug: "womens-shoes" }
@@ -23,7 +21,6 @@ export default function SideBar({ activeCat, onChangeCat }) {
         },
         {
             name: "Accessories",
-            slug: "accessories-group",
             items: [
                 { name: "Watches", slug: "mens-watches" },
                 { name: "Bags", slug: "womens-bags" },
@@ -33,7 +30,6 @@ export default function SideBar({ activeCat, onChangeCat }) {
         },
         {
             name: "Beauty",
-            slug: "beauty-group",
             items: [
                 { name: "Cosmetics", slug: "beauty" },
                 { name: "Skin Care", slug: "skin-care" },
@@ -45,23 +41,13 @@ export default function SideBar({ activeCat, onChangeCat }) {
     const [activePath, setActivePath] = useState([])
 
     const handleToggle = (node, depth) => {
+        const hasChildren = node.items && node.items.length > 0
+
         if (activePath[depth] === node.name) {
-            const newPath = activePath.slice(0, depth);
-            setActivePath(newPath);
-
-            if (newPath.length > 0) {
-                const parentName = newPath[newPath.length - 1];
-                const parentNode = categories.find(c => c.name === parentName);
-                onChangeCat(parentNode ? parentNode.slug : "");
-            } else {
-                onChangeCat("");
-            }
-        }
-        else {
-            const newPath = [...activePath.slice(0, depth), node.name];
-            setActivePath(newPath);
-
-            if (node.slug) {
+            setActivePath(activePath.slice(0, depth));
+        } else {
+            setActivePath([...activePath.slice(0, depth), node.name])
+            if (!hasChildren) {
                 onChangeCat(node.slug)
             }
         }
