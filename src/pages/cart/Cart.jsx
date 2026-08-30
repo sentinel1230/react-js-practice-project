@@ -36,8 +36,26 @@ export default function Cart() {
                             <span className={styles.itemPrice}>{item.price.toFixed(2)} €</span>
                         </div>
 
+                        <div className={styles.quantityControls}>
+                            <button
+                                className={styles.qtyBtn}
+                                onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }))}
+                                aria-label={`Decrease quantity of ${item.title}`}
+                            >
+                                −
+                            </button>
+                            <span className={styles.qtyValue}>{item.quantity}</span>
+                            <button
+                                className={styles.qtyBtn}
+                                onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }))}
+                                aria-label={`Increase quantity of ${item.title}`}
+                            >
+                                +
+                            </button>
+                        </div>
+
                         <span className={styles.lineTotal}>
-                            {(item.price * item.quantity).toFixed(2)} €
+                            {(item.price * item.quantity).toFixed(2)} $
                         </span>
 
                         <button
@@ -53,7 +71,7 @@ export default function Cart() {
 
             <div className={styles.summary}>
                 <span className={styles.totalLabel}>
-                    Total: <span className={styles.totalValue}>{totalPrice.toFixed(2)} €</span>
+                    Total: <span className={styles.totalValue}>{totalPrice.toFixed(2)} $</span>
                 </span>
                 <button className={styles.clearBtn} onClick={() => dispatch(clearCart())}>
                     Clear cart

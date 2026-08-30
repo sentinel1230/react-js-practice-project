@@ -26,10 +26,6 @@ export default function Navbar() {
                         <span>market</span>
                     </p>
                 </div>
-
-                <div className={styles.searchWrapper}>
-                    <input className={styles.searchInput} type="text" />
-                </div>
             </div>
 
             <div className={`${styles.navbarIconWrapper} ${isOpen ? styles.menuOpen : ""}`}>
@@ -38,12 +34,6 @@ export default function Navbar() {
                     <NavLink to="/products" onClick={() => setIsOpen(false)}>Products</NavLink>
                     <NavLink to="/cart" onClick={() => setIsOpen(false)}>Cart</NavLink>
                 </nav>
-
-                <div className={styles.iconWrapper}>
-                    <img className={styles.heartIcon} src={heartIcon} alt="Heart" />
-                    <img className={styles.cartIcon} src={cartIcon} alt="Cart" />
-                    <img className={styles.userIcon} src={userIcon} alt="User" />
-                </div>
             </div>
 
             <button className={`${styles.burger} ${isOpen ? styles.burgerActive : ""}`} onClick={toggle}>

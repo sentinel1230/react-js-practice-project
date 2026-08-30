@@ -30,12 +30,9 @@ const cartSlice = createSlice({
                     quantity: 1,
                 });
             }
-
-            localStorage.setItem("cart", JSON.stringify(state.items));
         },
         removeFromCart: (state, action) => {
             state.items = state.items.filter((i) => i.id !== action.payload);
-            localStorage.setItem("cart", JSON.stringify(state.items));
         },
         updateQuantity: (state, action) => {
             const { id, quantity } = action.payload;
@@ -46,12 +43,9 @@ const cartSlice = createSlice({
                 const item = state.items.find((i) => i.id === id);
                 if (item) item.quantity = quantity;
             }
-
-            localStorage.setItem("cart", JSON.stringify(state.items));
         },
         clearCart: (state) => {
             state.items = [];
-            localStorage.setItem("cart", JSON.stringify(state.items));
         },
     },
 });
