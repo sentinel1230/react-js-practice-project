@@ -38,27 +38,6 @@
     object-fit: cover;
 }
 
-.heartBtn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 16px;
-    height: 16px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
-    background-image: url(../../../../assets/white-heart.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    transition: transform 0.15s ease;
-}
-
-.heartActive {
-    background-image: url(../../../../assets/heart.svg)
-}
-
 .cardInfo {
     display: flex;
     flex-direction: column;
@@ -130,7 +109,6 @@
     text-decoration: underline;
 }
 
-.addToCartBtn:hover,
-.heartBtn:hover {
+.addToCartBtn:hover {
     transform: scale(1.1);
 }

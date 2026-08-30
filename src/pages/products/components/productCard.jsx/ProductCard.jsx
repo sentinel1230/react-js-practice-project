@@ -2,12 +2,9 @@ import styles from "./ProductCard.module.css";
 
 import { addToCart, removeFromCart } from "../../../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
 export default function ProductCard({ product }) {
     if (!product) return null;
-
-    const [isFavorite, setIsFavorite] = useState(false)
 
     const dispatch = useDispatch();
     const isAdded = useSelector((state) =>
@@ -30,10 +27,6 @@ export default function ProductCard({ product }) {
                     src={product.thumbnail}
                     alt={product.title}
                 />
-
-                <button
-                    className={`${styles.heartBtn} ${isFavorite ? styles.heartActive : ""}`}
-                    onClick={() => setIsFavorite(!isFavorite)}/>
             </div>
 
             <div className={styles.cardInfo}>
