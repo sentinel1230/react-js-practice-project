@@ -57,9 +57,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
-        }),
         ...(isProduction ? [new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css',
         })] : []),
