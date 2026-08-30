@@ -1,56 +1,44 @@
 import styles from "./ProductCard.module.css";
+import { Link } from "react-router-dom";
 
-import { addToCart, removeFromCart } from "../../../../features/cart/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
-
-export default function ProductCard({ product }) {
-    if (!product) return null;
-
-    const dispatch = useDispatch();
-    const isAdded = useSelector((state) =>
-        state.cart.items.some((item) => item.id === product.id)
-    );
-
-    const handleAddToCart = () => {
-        dispatch(addToCart(product));
-    };
-
-    const handleRemoveFromCart = () => {
-        dispatch(removeFromCart(product.id));
-    };
-
+export default function ProductCard({ product, isInCart, onAddToCart, onRemoveFromCart }) {
     return (
         <div className={styles.cardContainer}>
-            <div className={styles.cardImgContainer}>
-                <img
-                    className={styles.productImg}
-                    src={product.thumbnail}
-                    alt={product.title}
-                />
-            </div>
+            {product ? (
+                <div className={styles.productContainer}>
+                    <Link to={`/products/${product.id}`} className={styles.cardLink}>
+                        <div className={styles.cardImgContainer}>
+                            <img
+                                className={styles.productImg}
+                                src={product.thumbnail}
+                                alt={product.title}
+                            />
+                        </div>
+                    </Link>
+                    <div className={styles.cardInfo}>
+                        <div className={styles.heading}>
+                            <span>{product.title} - {product.brand || 'Unknown brand'}</span>
+                        </div>
 
-            <div className={styles.cardInfo}>
-                <div className={styles.heading}>
-                    <span>{product.title} - {product.brand || 'Unknown brand'}</span>
-                </div>
-
-                <div className={styles.costContainer}>
-                    <div className={styles.cost}>
-                        <span>{product.price.toFixed(2)} $</span>
+                        <div className={styles.costContainer}>
+                            <div className={styles.cost}>
+                                <span>{product.price.toFixed(2)} $</span>
+                            </div>
+                            {isInCart ? (
+                                <button
+                                    className={styles.addedBadgeBtn}
+                                    onClick={() => onRemoveFromCart(product.id)}
+                                />
+                            ) : (
+                                <button
+                                    className={styles.addToCartBtn}
+                                    onClick={() => onAddToCart(product)}
+                                />
+                            )}
+                        </div>
                     </div>
-                    {isAdded ? (
-                        <button
-                            className={styles.addedBadgeBtn}
-                            onClick={handleRemoveFromCart}
-                        />
-                    ) : (
-                        <button
-                            className={styles.addToCartBtn}
-                            onClick={handleAddToCart}
-                        />
-                    )}
                 </div>
-            </div>
+            ) : null}
         </div>
     );
 }

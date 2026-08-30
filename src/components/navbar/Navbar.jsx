@@ -2,10 +2,6 @@ import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 import logo from "../../assets/logo.svg";
-
-import heartIcon from "../../assets/heart.svg";
-import cartIcon from "../../assets/cart.svg";
-import userIcon from "../../assets/user.svg";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -30,7 +26,6 @@ export default function Navbar() {
 
             <div className={`${styles.navbarIconWrapper} ${isOpen ? styles.menuOpen : ""}`}>
                 <nav className={styles.navbar}>
-                    <NavLink to="/" onClick={() => setIsOpen(false)}>Home</NavLink>
                     <NavLink to="/products" onClick={() => setIsOpen(false)}>Products</NavLink>
                     <NavLink to="/cart" onClick={() => setIsOpen(false)}>Cart</NavLink>
                 </nav>
