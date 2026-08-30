@@ -43,7 +43,7 @@ export default function ProductCard({ product }) {
 
                 <div className={styles.costContainer}>
                     <div className={styles.cost}>
-                        <span>{product.price.toFixed(2)} €</span>
+                        <span>{product.price.toFixed(2)} $</span>
                     </div>
                     {isAdded ? (
                         <button
