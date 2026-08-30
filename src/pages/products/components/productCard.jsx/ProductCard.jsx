@@ -1,18 +1,20 @@
 import styles from "./ProductCard.module.css";
+import { Link } from "react-router-dom";
 
 export default function ProductCard({ product, isInCart, onAddToCart, onRemoveFromCart }) {
     return (
         <div className={styles.cardContainer}>
             {product ? (
                 <div className={styles.productContainer}>
-                    <div className={styles.cardImgContainer}>
-                        <img
-                            className={styles.productImg}
-                            src={product.thumbnail}
-                            alt={product.title}
-                        />
-                    </div>
-
+                    <Link to={`/products/${product.id}`} className={styles.cardLink}>
+                        <div className={styles.cardImgContainer}>
+                            <img
+                                className={styles.productImg}
+                                src={product.thumbnail}
+                                alt={product.title}
+                            />
+                        </div>
+                    </Link>
                     <div className={styles.cardInfo}>
                         <div className={styles.heading}>
                             <span>{product.title} - {product.brand || 'Unknown brand'}</span>
