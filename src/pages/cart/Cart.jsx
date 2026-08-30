@@ -20,7 +20,7 @@ export default function Cart() {
 
     return (
         <div className={styles.main}>
-            <h1 className={styles.title}>Корзина</h1>
+            <h1 className={styles.title}>Cart</h1>
 
             <div className={styles.itemsList}>
                 {items.map((item) => (
