@@ -3,7 +3,7 @@ import Layout from "./components/layout/Layout.jsx";
 import Products from "./pages/products/Products.jsx";
 import Cart from "./pages/cart/Cart.jsx";
 import ProductDetail from "./pages/productDetail/ProductDetail.jsx";
-import NotFound from "./pages/notFound/notFound.jsx";
+import NotFound from "./pages/notFound/NotFound.jsx";
 
 import "./App.css";
 

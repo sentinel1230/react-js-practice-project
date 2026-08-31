@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
-        publicPath: isProduction ? '/task-5---react-javascript-practice/' : '/',
+        publicPath: isProduction ? '/react-js-practice-project/' : '/',
         clean: true,
     },
     mode: isProduction ? 'production' : 'development',
