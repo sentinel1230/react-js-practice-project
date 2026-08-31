@@ -24,17 +24,27 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className={`${styles.navbarIconWrapper} ${isOpen ? styles.menuOpen : ""}`}>
+            <div
+                id="primary-navigation"
+                className={`${styles.navbarIconWrapper} ${isOpen ? styles.menuOpen : ""}`}
+            >
                 <nav className={styles.navbar}>
                     <NavLink to="/products" onClick={() => setIsOpen(false)}>Products</NavLink>
                     <NavLink to="/cart" onClick={() => setIsOpen(false)}>Cart</NavLink>
                 </nav>
             </div>
 
-            <button className={`${styles.burger} ${isOpen ? styles.burgerActive : ""}`} onClick={toggle}>
-                <span></span>
-                <span></span>
-                <span></span>
+            <button
+                className={`${styles.burger} ${isOpen ? styles.burgerActive : ""}`}
+                onClick={toggle}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isOpen}
+                aria-controls="primary-navigation"
+            >
+
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </button>
         </div>
     )

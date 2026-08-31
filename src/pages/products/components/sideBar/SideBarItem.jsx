@@ -18,12 +18,17 @@ export default function SideBarItem({ node, depth = 0, activePath, onToggle, glo
 
     return (
         <div>
-            <div className={`${tabClass} ${isOpen || isCurrentActiveProduct ? styles.active : ""}`} onClick={handleClick}>
-                <div className={styles.tabWrapper}>
+            <button
+                type="button"
+                className={`${tabClass} ${isOpen || isCurrentActiveProduct ? styles.active : ""}`}
+                onClick={handleClick}
+                aria-expanded={hasChildren ? isOpen : undefined}
+            >
+                <span className={styles.tabWrapper}>
                     {node.name}
                     {hasChildren && <Arrow isActive={isOpen} />}
-                </div>
-            </div>
+                </span>
+            </button>
 
             {isOpen && hasChildren && (
                 <div className={styles.subMenu}>

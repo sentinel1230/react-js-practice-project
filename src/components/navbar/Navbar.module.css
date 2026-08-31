@@ -65,6 +65,11 @@
     border-bottom: 2px solid #EA7B82;
 }
 
+.navbar a:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 2px;
+}
+
 .burger {
     display: none;
     flex-direction: column;
@@ -81,6 +86,11 @@
     height: 2px;
     background-color: #FFFFFF;
     transition: all 0.3s ease;
+}
+
+.burger:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 4px;
 }
 
 @media (max-width: 850px) {
