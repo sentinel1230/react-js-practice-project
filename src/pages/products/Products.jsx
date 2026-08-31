@@ -33,7 +33,7 @@ export default function Products() {
                     <SideBar activeCat={sidebarCategory} onChangeCat={setSidebarCategory} />
                 </div>
 
-                <main className={styles.catalogContainer}>
+                <div className={styles.catalogContainer}>
                     <nav className={styles.breadcrumbs}>
                         <span>Products</span>
                         <span>{sidebarCategory}</span>
@@ -80,7 +80,7 @@ export default function Products() {
                             )}
                         </div>
                     )}
-                </main>
+                </div>
             </div>
         </div>
     )
