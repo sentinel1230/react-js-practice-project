@@ -9,6 +9,10 @@
     padding: 0;
 }
 
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
 *:focus {
     outline: none;
 }

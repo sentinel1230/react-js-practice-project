@@ -1,16 +1,22 @@
-import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout.jsx";
 import Products from "./pages/products/Products.jsx";
 import Cart from "./pages/cart/Cart.jsx";
+import ProductDetail from "./pages/productDetail/ProductDetail.jsx";
+import NotFound from "./pages/notFound/NotFound.jsx";
 
 import "./App.css";
-import ProductDetail from "./pages/productDetail/ProductDetail.jsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
+        errorElement: <NotFound />,
         children: [
+            {
+                index: true,
+                element: <Navigate to="/products" replace />
+            },
             {
                 path: "/products",
                 element: <Products />
@@ -26,7 +32,7 @@ const router = createBrowserRouter([
         ]
     }
 ], {
-    basename: process.env.NODE_ENV === "production" ? "/react-js-practice-project" : "/",
+    basename: process.env.NODE_ENV === "production" ? "react-js-practice-project" : "/",
 })
 
 export default function App() {
