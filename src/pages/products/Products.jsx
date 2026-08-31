@@ -41,7 +41,7 @@ export default function Products() {
 
                     <div className={styles.filterToolbar}>
                         <div className={styles.dropdownsGroup}>
-                            <Select title="Brand" options={availableBrands} value={selectedBrand} onChange={setSelectedBrand} />
+                            <Select title="Brand" options={availableBrands.length} value={selectedBrand} onChange={setSelectedBrand} />
                             <Select title="Price" options={["Under $50", "$50 - $100", "Over $100"]} value={selectedPrice} onChange={setSelectedPrice} />
                         </div>
                     </div>

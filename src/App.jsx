@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import { createHashRouter, RouterProvider, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout.jsx";
 import Products from "./pages/products/Products.jsx";
 import Cart from "./pages/cart/Cart.jsx";
@@ -7,7 +7,7 @@ import NotFound from "./pages/notFound/NotFound.jsx";
 
 import "./App.css";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Layout />,
